@@ -3,6 +3,9 @@
 FROM golang:1.11.1 as builder
 
 RUN mkdir -p /go/src/github.com/eks-workshop-sample-api-service-go
+
+RUN aws s3 COPY s3://codebuildtestwithmaven/buildspec.yml .
+
 WORKDIR /go/src/github.com/eks-workshop-sample-api-service-go
 RUN useradd -u 10001 app
 COPY . .
